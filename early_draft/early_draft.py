@@ -283,6 +283,7 @@ def blob_for_long(
     HA_max=24 - 3.5,
     blob_names=[],
     u_exptime=38.,
+    scheduled_respect=30.0,
 ):
     """
     Generate surveys that take observations in blobs.
@@ -390,6 +391,9 @@ def blob_for_long(
                 season_end_hour=season_end_hour,
             )
         )
+
+        # Make sure we respect scheduled observations
+        bfs.append((bf.TimeToScheduledBasisFunction(time_needed=scheduled_respect), 0))
 
         # Masks, give these 0 weight
         bfs.append(
