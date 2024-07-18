@@ -1435,9 +1435,10 @@ def example_scheduler(args):
     neo_night_pattern = pattern_dict[neo_night_pattern]
     reverse_neo_night_pattern = [not val for val in neo_night_pattern]
 
-    # Modify the footprint
+    # Modify the footprint 
+    magellenic_clouds_ratios = {"u": 0.65, "g": 0.65, "r": 1.1, "i": 1.1, "z": 0.34, "y": 0.35}
     sky = CustomAreaMap(nside=nside)
-    footprints_hp_array, labels = sky.return_maps()
+    footprints_hp_array, labels = sky.return_maps(magellenic_clouds_ratios=magellenic_clouds_ratios)
 
     wfd_indx = np.where(
         (labels == "lowdust") | (labels == "virgo")
