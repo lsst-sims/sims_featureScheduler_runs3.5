@@ -6,13 +6,12 @@ Updates:
 * adding in the early uniform rolling
 * making long gap blobs respect pre-scheduled observations.
 * minor shifts to DDF central positions
-
-adding:
+* updates to DDF season. First season now auto-scales rather than being manually set.
 * taking LMC/SMC out of rolling
 * updated LMC/SMC filter balance. Trying to turn down u and g a little so dark time not oversubscribed
 
 
 --looks like the flag to turn off uniform could use some more work, but if we want uniform releases it's fine.
 
-XXX--may need to turn template requirement in the SCP to drop below 3 a year.
 XXX--may want to add some of the early science things
+XXX--Do we add ToO's into the baseline?
