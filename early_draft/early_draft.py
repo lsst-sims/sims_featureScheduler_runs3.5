@@ -1094,10 +1094,10 @@ def ddf_surveys(
     obs_array = generate_ddf_scheduled_obs(season_unobs_frac=season_unobs_frac)
 
     euclid_obs = np.where(
-        (obs_array["note"] == "DD:EDFS_b") | (obs_array["note"] == "DD:EDFS_a")
+        (obs_array["scheduler_note"] == "DD:EDFS_b") | (obs_array["scheduler_note"] == "DD:EDFS_a")
     )[0]
     all_other = np.where(
-        (obs_array["note"] != "DD:EDFS_b") & (obs_array["note"] != "DD:EDFS_a")
+        (obs_array["scheduler_note"] != "DD:EDFS_b") & (obs_array["scheduler_note"] != "DD:EDFS_a")
     )[0]
 
     survey1 = ScriptedSurvey(

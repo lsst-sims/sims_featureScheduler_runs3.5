@@ -9,7 +9,7 @@ from rubin_scheduler.scheduler.utils import (
     StepSlopes,
     set_default_nside,
 )
-from rubin_scheduler.utils import _hpid2_ra_dec
+from rubin_scheduler.utils import _hpid2_ra_dec, angular_separation
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 
@@ -102,6 +102,43 @@ class CustomAreaMap(EuclidOverlapFootprint):
         self.low_dust = np.where(self.low_dust > smoothing_cutoff, 1, 0)
 
         self.euclid_contour_file = euclid_contour_file
+
+    def add_bulgy(self, filter_ratios, label="bulgy"):
+        """Define a bulge region, where the 'bulge' is a series of
+        circles set by points defined to match as best as possible the
+        map requested by the SMWLV working group on galactic plane coverage.
+        Implemented in v3.0.
+        Updates self.healmaps and self.pix_labels.
+
+        Parameters
+        ----------
+        filter_ratios : `dict` {`str`: `float`}
+            Dictionary of weights per filter for the footprint.
+        label : `str`, optional
+            Label to apply to the resulting footprint
+        """
+        # Some RA, dec, radius points that
+        # seem to cover the areas that are desired
+        points = [
+            [100.90, 9.55, 3],
+            [84.92, -5.71, 3],
+            [266.3, -29, 17],
+            [279, -13, 10],
+            [256, -45, 11],
+            [155, -56.5, 6.5],
+            [172, -62, 5],
+            [190, -65, 5],
+            [210, -64, 5],
+            [242, -58, 6.5],
+            [225, -60, 6.5],
+        ]
+        for point in points:
+            dist = angular_separation(self.ra, self.dec, point[0], point[1])
+            # Only change pixels where the label isn't already set.
+            indx = np.where((dist < point[2]) & (self.pix_labels == ""))
+            self.pix_labels[indx] = label
+            for filtername in filter_ratios:
+                self.healmaps[filtername][indx] = filter_ratios[filtername]
 
     def return_maps(
         self,
