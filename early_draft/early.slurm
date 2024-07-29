@@ -47,8 +47,8 @@
 
 ## Set up the evironment
 # source ~/anaconda3/etc/profile.d/conda.sh
-conda init
-conda activate rubin
+
+conda activate conda activate /gscratch/astro/yoachim/miniconda3/envs/rubin
 export OPENBLAS_NUM_THREADS=1
 
 cd /gscratch/dirac/yoachim/sims_featureScheduler_runs3.5/early_draft
