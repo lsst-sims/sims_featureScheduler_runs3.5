@@ -1550,25 +1550,6 @@ def example_scheduler(args):
         night_pattern=reverse_neo_night_pattern,
     )
 
-    camera_rot_limits = [-80.0, 80.0]
-    detailer_list = []
-    detailer_list.append(
-        detailers.CameraRotDetailer(
-            min_rot=np.min(camera_rot_limits), max_rot=np.max(camera_rot_limits)
-        )
-    )
-
-    # Let's make a footprint to follow up ToO events
-    too_footprint = footprints_hp["r"] * 0 + np.nan
-    too_footprint[np.where(footprints_hp["r"] > 0)[0]] = 1.0
-
-    detailer_list.append(detailers.Rottep2RotspDesiredDetailer())
-    toos = gen_too_surveys(
-        nside=nside,
-        detailer_list=detailer_list,
-        too_footprint=too_footprint,
-        split_long=split_long,
-    )
 
     roman_surveys = [gen_roman_on_season(), gen_roman_off_season()]
     if no_too:
@@ -1576,6 +1557,24 @@ def example_scheduler(args):
         fileroot = fileroot.replace('too_', 'notoo_')
 
     else:
+        camera_rot_limits = [-80.0, 80.0]
+        detailer_list = []
+        detailer_list.append(
+            detailers.CameraRotDetailer(
+                min_rot=np.min(camera_rot_limits), max_rot=np.max(camera_rot_limits)
+            )
+        )
+        # Let's make a footprint to follow up ToO events
+        too_footprint = footprints_hp["r"] * 0 + np.nan
+        too_footprint[np.where(footprints_hp["r"] > 0)[0]] = 1.0
+
+        detailer_list.append(detailers.Rottep2RotspDesiredDetailer())
+        toos = gen_too_surveys(
+            nside=nside,
+            detailer_list=detailer_list,
+            too_footprint=too_footprint,
+            split_long=split_long,
+        )
         surveys = [toos, roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
 
     scheduler = CoreScheduler(surveys, nside=nside)
