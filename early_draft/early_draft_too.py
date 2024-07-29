@@ -1463,11 +1463,6 @@ def example_scheduler(args):
 
     repeat_night_weight = None
 
-    too_scale = 1.
-    sim_ToOs, event_table = gen_all_events(
-        scale=too_scale, nside=nside
-    )
-
     # Use the Almanac to find the position of the sun at the start of survey
     almanac = Almanac(mjd_start=mjd_start)
     sun_moon_info = almanac.get_sun_moon_positions(mjd_start)
@@ -1550,13 +1545,19 @@ def example_scheduler(args):
         night_pattern=reverse_neo_night_pattern,
     )
 
-
     roman_surveys = [gen_roman_on_season(), gen_roman_off_season()]
     if no_too:
         surveys = [roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
         fileroot = fileroot.replace('too_', 'notoo_')
+        sim_ToOs = None
+        event_table = None
 
     else:
+
+        too_scale = 1.
+        sim_ToOs, event_table = gen_all_events(
+            scale=too_scale, nside=nside
+        )
         camera_rot_limits = [-80.0, 80.0]
         detailer_list = []
         detailer_list.append(
