@@ -46,7 +46,7 @@
 #SBATCH --export=all
 
 ## Set up the evironment
-source ~/anaconda3/etc/profile.d/conda.sh
+# source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin
 export OPENBLAS_NUM_THREADS=1
 
