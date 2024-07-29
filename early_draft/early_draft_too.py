@@ -34,6 +34,7 @@ from gen_too_surveys import gen_too_surveys
 from gen_events import gen_all_events
 
 from to_merge import make_rolling_footprints, CustomAreaMap
+from roman_survey import gen_roman_off_season, gen_roman_on_season
 
 # So things don't fail on hyak
 iers.conf.auto_download = False
@@ -1414,6 +1415,7 @@ def example_scheduler(args):
     mjd_plus = args.mjd_plus
     temp_uniform = args.temp_uniform
     split_long = args.split_long
+    no_too = args.no_too
 
     u_exptime = 38.
 
@@ -1568,7 +1570,13 @@ def example_scheduler(args):
         split_long=split_long,
     )
 
-    surveys = [toos, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
+    roman_surveys = [gen_roman_on_season(), gen_roman_off_season()]
+    if no_too:
+        surveys = [roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
+        fileroot = fileroot.replace('too_', 'notoo_')
+
+    else:
+        surveys = [toos, roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
 
     scheduler = CoreScheduler(surveys, nside=nside)
 
@@ -1691,6 +1699,9 @@ def sched_argparser():
 
     parser.add_argument("--split_long", dest="split_long", action="store_true")
     parser.set_defaults(split_long=False)
+
+    parser.add_argument("--no_too", dest="no_too", action="store_true")
+    parser.set_defaults(no_too=False)
 
     return parser
 

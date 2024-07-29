@@ -208,12 +208,13 @@ def gen_sso_events(n_events=300, twi_fraction=0.75, seed=52, radius=2.0):
 
     con = sqlite3.connect("early_draft_v3.5_10yrs.db")#"../baseline/baseline_v3.4_10yrs.db")
     df = pd.read_sql(
-        'select fieldRA as ra,fieldDec as dec, observationStartMJD from observations where note like "twilight%"',
+        'select fieldRA as ra,fieldDec as dec, observationStartMJD from observations where scheduler_note like "twilight%"',
         con,
     )
     names = ["mjd_start", "ra", "dec", "expires", "radius", "ToO_label"]
     types = [float] * 5 + ["<U50"]
     twi_events = np.zeros(int(n_events * twi_fraction), dtype=list(zip(names, types)))
+
     indx = rng.choice(np.arange(df["ra"].values.size), size=twi_events.size)
     twi_events["ra"] = np.radians(df["ra"].values[indx])
     twi_events["dec"] = np.radians(df["dec"].values[indx])
@@ -222,7 +223,7 @@ def gen_sso_events(n_events=300, twi_fraction=0.75, seed=52, radius=2.0):
     twi_events["ToO_label"] = "SSO_twilight"
 
     df = pd.read_sql(
-        'select fieldRA as ra,fieldDec as dec,observationStartMJD from observations where note not like "twilight%"',
+        'select fieldRA as ra,fieldDec as dec,observationStartMJD from observations where scheduler_note not like "twilight%"',
         con,
     )
 
