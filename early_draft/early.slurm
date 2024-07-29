@@ -33,7 +33,7 @@
 
 ## Specify the working directory for this job
 
-#SBATCH --chdir=/mmfs1/home/yoachim/runs35/early_draft
+#SBATCH --chdir=/gscratch/dirac/yoachim/sims_featureScheduler_runs3.5/early_draft
 
 ##turn on e-mail notification
 
@@ -47,13 +47,14 @@
 
 ## Set up the evironment
 # source ~/anaconda3/etc/profile.d/conda.sh
+conda init
 conda activate rubin
 export OPENBLAS_NUM_THREADS=1
 
-cd /mmfs1/home/yoachim/runs35/early_draft
+cd /gscratch/dirac/yoachim/sims_featureScheduler_runs3.5/early_draft
 
 ## run all the baseline commands in parallel
-module load parallel-20170722
+module load gnu/parallel/20210422
 
 python early_draft.py --no_too
 
