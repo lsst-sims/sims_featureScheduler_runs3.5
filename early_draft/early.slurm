@@ -47,7 +47,7 @@
 
 ## Set up the evironment
 source /gscratch/astro/yoachim/miniconda3/etc/profile.d/conda.sh
-conda activate /gscratch/astro/yoachim/miniconda3/envs/rubin
+conda activate /gscratch/astro/yoachim/miniconda3/envs/rubin/envs/rubin2
 
 export OPENBLAS_NUM_THREADS=1
 
@@ -57,7 +57,7 @@ cd /gscratch/dirac/yoachim/sims_featureScheduler_runs3.5/early_draft
 module load gnu/parallel/20210422
 
 # python early_draft_too.py --no_too
-python early_draft_too.py --no_too
+python early_draft_too.py
 
 rm maf.sh
 ls *10yrs.db | xargs -I'{}' echo "glance_dir --db '{}'" > maf.sh
