@@ -56,15 +56,16 @@ cd /gscratch/dirac/yoachim/sims_featureScheduler_runs3.5/early_draft
 ## run all the baseline commands in parallel
 module load gnu/parallel/20210422
 
+# python early_draft_too.py --no_too
 python early_draft_too.py --no_too
 
-# rm maf.sh
-# ls *10yrs.db | xargs -I'{}' echo "glance_dir --db '{}'" > maf.sh
-# ls *10yrs.db | xargs -I'{}' echo "scimaf_dir --db '{}'" >> maf.sh
-# ls *10yrs.db | xargs -I'{}' echo "ddf_dir --db '{}'" >> maf.sh
-# ls *10yrs.db | xargs -I'{}' echo "metadata_dir --db '{}'" >> maf.sh
-# 
-# generate_ss 
-# cat ss_script.sh >> maf.sh
-# 
-# cat maf.sh | parallel -j 8
+rm maf.sh
+ls *10yrs.db | xargs -I'{}' echo "glance_dir --db '{}'" > maf.sh
+ls *10yrs.db | xargs -I'{}' echo "scimaf_dir --db '{}'" >> maf.sh
+ls *10yrs.db | xargs -I'{}' echo "ddf_dir --db '{}'" >> maf.sh
+ls *10yrs.db | xargs -I'{}' echo "metadata_dir --db '{}'" >> maf.sh
+
+generate_ss 
+cat ss_script.sh >> maf.sh
+
+cat maf.sh | parallel -j 8
