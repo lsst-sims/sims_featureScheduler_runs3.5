@@ -259,7 +259,7 @@ def standard_bf(
 def blob_for_long(
     nside,
     nexp=2,
-    exptime=30.0,
+    exptime=29.2,
     filter1s=["g"],
     filter2s=["i"],
     pair_time=33.0,
@@ -511,7 +511,7 @@ def gen_long_gaps_survey(
 def gen_greedy_surveys(
     nside=32,
     nexp=2,
-    exptime=30.0,
+    exptime=29.2,
     filters=["r", "i", "z", "y"],
     camera_rot_limits=[-80.0, 80.0],
     shadow_minutes=60.0,
@@ -640,7 +640,7 @@ def gen_greedy_surveys(
 def generate_blobs(
     nside,
     nexp=2,
-    exptime=30.0,
+    exptime=29.2,
     filter1s=["u", "u", "g", "r", "i", "z", "y"],
     filter2s=["g", "r", "r", "i", "z", "y", "y"],
     pair_time=33.0,
@@ -884,7 +884,7 @@ def generate_blobs(
 def generate_twi_blobs(
     nside,
     nexp=2,
-    exptime=30.0,
+    exptime=29.2,
     filter1s=["r", "i", "z", "y"],
     filter2s=["i", "z", "y", "y"],
     pair_time=15.0,
@@ -1093,9 +1093,9 @@ def generate_twi_blobs(
 
 
 def ddf_surveys(
-    detailers=None, season_unobs_frac=0.2, euclid_detailers=None, nside=None
+    detailers=None, season_unobs_frac=0.2, euclid_detailers=None, nside=None, expt=29.2,
 ):
-    obs_array = generate_ddf_scheduled_obs(season_unobs_frac=season_unobs_frac)
+    obs_array = generate_ddf_scheduled_obs(season_unobs_frac=season_unobs_frac, expt=expt)
     euclid_obs = np.where(
         (obs_array["scheduler_note"] == "DD:EDFS_b") | (obs_array["scheduler_note"] == "DD:EDFS_a")
     )[0]
