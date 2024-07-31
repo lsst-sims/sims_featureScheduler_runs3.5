@@ -12,6 +12,7 @@ Updates:
 * updating MW bulgy footprint a bit like v3.3 no_high_blob
 * include roman overlap obserations
 * turning default exposure time down to 29.2s for all filters but u
+* increase camera read time to 2.4s
 
 
 --looks like the flag to turn off uniform could use some more work, but if we want uniform releases it's fine.
