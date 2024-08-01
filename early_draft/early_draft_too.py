@@ -1545,7 +1545,8 @@ def example_scheduler(args):
         night_pattern=reverse_neo_night_pattern,
     )
 
-    roman_surveys = [gen_roman_on_season(), gen_roman_off_season()]
+    roman_surveys = [gen_roman_on_season(nexp=nexp, exptime=29.2),
+                     gen_roman_off_season(nexp=nexp, exptime=29.2)]
     if no_too:
         surveys = [roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
         fileroot = fileroot.replace('too_', 'notoo_')

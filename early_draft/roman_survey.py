@@ -83,7 +83,8 @@ def roman_info():
     return result
 
 
-def gen_roman_on_season(nside=32, camera_ddf_rot_limit=75.):
+def gen_roman_on_season(nside=32, camera_ddf_rot_limit=75., exptime=30.,
+                        nexp=2,):
 
     field_info = roman_info()
 
@@ -111,12 +112,13 @@ def gen_roman_on_season(nside=32, camera_ddf_rot_limit=75.):
     details.append(detailers.CameraRotDetailer(min_rot=-camera_ddf_rot_limit, max_rot=camera_ddf_rot_limit))
 
     survey = DeepDrillingSurvey(basis_functions, RA=RA, dec=dec, sequence='giriz',
-                                nvis=[1, 1, 1, 1, 1], exptime=30, nexp=2,
+                                nvis=[1, 1, 1, 1, 1], exptime=exptime, nexp=nexp,
                                 survey_name=survey_name, detailers=details)
     return survey
 
 
-def gen_roman_off_season(nside=32, camera_ddf_rot_limit=75.):
+def gen_roman_off_season(nside=32, camera_ddf_rot_limit=75., exptime=30.,
+                         nexp=2,):
     """Generate a ddf-like survey object to observe the roman field every ~3 days in the off-season
     """
 
@@ -145,6 +147,6 @@ def gen_roman_off_season(nside=32, camera_ddf_rot_limit=75.):
     details.append(detailers.CameraRotDetailer(min_rot=-camera_ddf_rot_limit, max_rot=camera_ddf_rot_limit))
 
     survey = DeepDrillingSurvey(basis_functions, RA=RA, dec=dec, sequence='griz',
-                                nvis=[1, 1, 1, 1], exptime=30, nexp=2,
+                                nvis=[1, 1, 1, 1], exptime=exptime, nexp=nexp,
                                 survey_name=survey_name, detailers=details)
     return survey
