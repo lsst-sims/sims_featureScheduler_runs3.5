@@ -161,7 +161,7 @@ class CustomAreaMap(EuclidOverlapFootprint):
             "y": 0.093,
         },
         low_dust_ratios={"u": 0.35, "g": 0.4, "r": 1.0, "i": 1.0, "z": 0.9, "y": 0.9},
-        bulge_ratios={"u": 0.177, "g": 0.98, "r": 1.03, "i": 1.03, "z": 0.98, "y": 0.226},
+        bulge_ratios={"u": 0.17, "g": 0.93, "r": 0.98, "i": 0.98, "z": 0.93, "y": 0.21},
         virgo_ratios={"u": 0.35, "g": 0.4, "r": 1.0, "i": 1.0, "z": 0.9, "y": 0.9},
         euclid_ratios={"u": 0.35, "g": 0.4, "r": 1.0, "i": 1.0, "z": 0.9, "y": 0.9},
     ):

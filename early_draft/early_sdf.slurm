@@ -10,7 +10,7 @@
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=4g
+#SBATCH --mem-per-cpu=10g
 #
 #SBATCH --time=0-14:10:00
 #SBATCH --chdir=/sdf/home/y/yoachim/u/git_repos/sims_featureScheduler_runs3.5/early_draft
