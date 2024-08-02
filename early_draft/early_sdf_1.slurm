@@ -13,7 +13,7 @@
 #SBATCH --mem-per-cpu=10g
 #
 #SBATCH --time=0-14:10:00
-#SBATCH --chdir= /sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/early_draft
+#SBATCH --chdir= /sdf/group/rubin/u/yoachim/git_repos/sims_featureScheduler_runs3.5/early_draft
 
 ## Set up the evironment
 source ~/anaconda3/etc/profile.d/conda.sh
