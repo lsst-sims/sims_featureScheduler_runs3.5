@@ -83,17 +83,18 @@ def ddf_slopes(ddf_name, raw_obs, night_season, season_seq=30, min_season_length
         # EDFS_b ddf visits are allocated some other way
         season_vals = season_vals * 0
 
+    # XXX--bad magic numbers. Refactor to pass this info around properly
     if ddf_name == "ELAISS1":
-        # on seasons = 1,3,6
-        for season_i in [1, 3, 6]:
-            in_season = np.where(int_season == season_i)
-            raw_obs[in_season] *= 1.5
+        for season in [1, 3, 6]:
+            indx = np.where(season_list == season)[0]
+            season_vals[indx] *= 1.5
         # now need to remember that seasons 2,4,7 have 1/2 length sequences.
 
+    # XXX--bad magic numbers. Refactor to pass this info around properly
     if ddf_name == "XMM_LSS":
-        for season_i in [2, 4, 7]:
-            in_season = np.where(int_season == season_i)
-            raw_obs[in_season] *= 1.5
+        for season in [2, 4, 7]:
+            indx = np.where(season_list == season)[0]
+            season_vals[indx] *= 1.5
         # now need to remember that seasons 3,5,8 have 1/2 length sequences.
 
     # Round the season_vals -- we're looking for integer numbers of sequences

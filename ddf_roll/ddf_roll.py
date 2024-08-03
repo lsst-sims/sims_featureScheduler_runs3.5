@@ -1100,6 +1100,8 @@ def ddf_surveys(
     obs_array = generate_ddf_scheduled_obs(season_unobs_frac=season_unobs_frac, expt=expt,
                                            low_season_frac=low_season_frac,
                                            low_season_rate=low_season_rate)
+    for note in np.unique(obs_array["scheduler_note"]):
+        print(note, np.size(np.where(obs_array["scheduler_note"] == note)[0]))
 
     if split_filters is not None:
         for filtername in split_filters:
