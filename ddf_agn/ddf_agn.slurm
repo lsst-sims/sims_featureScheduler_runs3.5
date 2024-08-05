@@ -20,4 +20,5 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin
 export OPENBLAS_NUM_THREADS=1
 
-python ddf_agn.slurm
+# python early_draft_too.py --no_too 
+python early_draft_too.py 
