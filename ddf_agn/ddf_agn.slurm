@@ -21,4 +21,4 @@ conda activate rubin
 export OPENBLAS_NUM_THREADS=1
 
 # python early_draft_too.py --no_too 
-python early_draft_too.py 
+python ddf_agn.py
