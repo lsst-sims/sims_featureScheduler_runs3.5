@@ -1095,7 +1095,7 @@ def generate_twi_blobs(
 
 def ddf_surveys(
     detailers=None, season_unobs_frac=0.1, euclid_detailers=None, nside=None, expt=29.2,
-    low_season_frac=0.1, low_season_rate=0.3, split_filters='izy', split_time=1.,
+    low_season_frac=0.1, low_season_rate=0.3, split_filters=None, split_time=1.,
 ):
     obs_array = generate_ddf_scheduled_obs(season_unobs_frac=season_unobs_frac, expt=expt,
                                            low_season_frac=low_season_frac,
