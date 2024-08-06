@@ -10,7 +10,7 @@
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=140g
+#SBATCH --mem=140g
 #
 #SBATCH --time=0-14:10:00
 #SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/maf
