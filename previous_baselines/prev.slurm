@@ -3,7 +3,7 @@
 #SBATCH --account=rubin:developers      # Account name
 #SBATCH --partition=milano
 #
-#SBATCH --job-name=maf3.5
+#SBATCH --job-name=prev_baseline
 #SBATCH --output=output-%j.txt
 #SBATCH --error=output-%j.txt
 #
