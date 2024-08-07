@@ -15,6 +15,10 @@
 #SBATCH --time=2-14:10:00
 #SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/maf
 
+##turn on e-mail notification
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=yoachim@uw.edu
+
 ## Set up the evironment
 source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin
