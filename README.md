@@ -1,3 +1,7 @@
+
+[![DOI](https://zenodo.org/badge/808327321.svg)](https://zenodo.org/doi/10.5281/zenodo.13260262)
+
+
 # sims_featureScheduler_runs3.5
 The further adventues of simulating Rubin observing strategies
 
