@@ -84,17 +84,17 @@ def ddf_slopes(ddf_name, raw_obs, night_season, season_seq=30, min_season_length
         season_vals = season_vals * 0
 
     # XXX--bad magic numbers. Refactor to pass this info around properly
-    #if ddf_name == "ELAISS1":
-    #    for season in [1, 3, 6]:
-    #        indx = np.where(season_list == season)[0]
-    #        season_vals[indx] *= 1.5
+    if ddf_name == "ELAISS1":
+        for season in [1, 3, 6]:
+            indx = np.where(season_list == season)[0]
+            season_vals[indx] *= 1.5
         # now need to remember that seasons 2,4,7 have 1/2 length sequences.
 
     # XXX--bad magic numbers. Refactor to pass this info around properly
-    #if ddf_name == "XMM_LSS":
-    #    for season in [2, 4, 7]:
-    #        indx = np.where(season_list == season)[0]
-    #        season_vals[indx] *= 1.5
+    if ddf_name == "XMM_LSS":
+        for season in [2, 4, 7]:
+            indx = np.where(season_list == season)[0]
+            season_vals[indx] *= 1.5
         # now need to remember that seasons 3,5,8 have 1/2 length sequences.
 
     # Round the season_vals -- we're looking for integer numbers of sequences
@@ -475,9 +475,6 @@ def generate_ddf_scheduled_obs(
                 in_season = np.where(out_season_int == season_i)[0]
                 if season_i in roll_fields[ddf_name]["low"]:
                     nvis_now = np.array(nvis_master)/2
-                    nvis_now = nvis_now.astype(int)
-                elif season_i in roll_fields[ddf_name]["high"]:
-                    nvis_now = np.array(nvis_master)*1.5
                     nvis_now = nvis_now.astype(int)
                 else:
                     nvis_now = nvis_master
