@@ -10,9 +10,9 @@
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
-#SBATCH --mem=140g
+#SBATCH --mem=180g
 #
-#SBATCH --time=0-24:10:00
+#SBATCH --time=1-24:10:00
 #SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/previous_baselines
 
 ## Set up the evironment
