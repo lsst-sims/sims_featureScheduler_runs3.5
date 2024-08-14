@@ -330,7 +330,7 @@ def generate_ddf_scheduled_obs(
     sun_alt_max=-18,
     moon_min_distance=25.0,
     dist_tol=3.0,
-    nvis_master=[16, 20, 16, 16, 19, 14], #[8, 10, 20, 20, 24, 18],
+    nvis_master=np.array([16, 20, 16, 16, 18, 14])/2., #[8, 10, 20, 20, 24, 18],
     filters="ugrizy",
     nsnaps=[1, 2, 2, 2, 2, 2],
     mjd_start=None,
