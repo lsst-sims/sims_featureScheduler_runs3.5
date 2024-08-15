@@ -330,7 +330,7 @@ def generate_ddf_scheduled_obs(
     sun_alt_max=-18,
     moon_min_distance=25.0,
     dist_tol=3.0,
-    nvis_master=np.array([16, 20, 16, 16, 18, 14])/2., #[8, 10, 20, 20, 24, 18],
+    nvis_master=(np.array([16, 20, 16, 16, 18, 14])/2.).astype(int), #[8, 10, 20, 20, 24, 18],
     filters="ugrizy",
     nsnaps=[1, 2, 2, 2, 2, 2],
     mjd_start=None,
@@ -454,7 +454,7 @@ def generate_ddf_scheduled_obs(
                     obs["filter"] = filtername
                     obs["nexp"] = nexp
                     obs["scheduler_note"] = "DD:%s" % ddf_name
-                    obs["target"] = "DD:%s" % ddf_name
+                    obs["target_name"] = "DD:%s" % ddf_name
 
                     obs["mjd_tol"] = mjd_tol
                     obs["dist_tol"] = dist_tol
@@ -475,7 +475,7 @@ def generate_ddf_scheduled_obs(
                     obs["filter"] = filtername
                     obs["nexp"] = nexp
                     obs["scheduler_note"] = "DD:%s" % ddf_name.replace("_a", "_b")
-                    obs["target"] = "DD:%s" % ddf_name.replace("_a", "_b")
+                    obs["target_name"] = "DD:%s" % ddf_name.replace("_a", "_b")
 
                     obs["mjd_tol"] = mjd_tol
                     obs["dist_tol"] = dist_tol
@@ -498,7 +498,7 @@ def generate_ddf_scheduled_obs(
                     obs["filter"] = filtername
                     obs["nexp"] = nexp
                     obs["scheduler_note"] = "DD:%s" % ddf_name
-                    obs["target"] = "DD:%s" % ddf_name
+                    obs["target_name"] = "DD:%s" % ddf_name
 
                     obs["mjd_tol"] = mjd_tol
                     obs["dist_tol"] = dist_tol
