@@ -12,6 +12,28 @@ from rubin_scheduler.scheduler.utils import (
 from rubin_scheduler.utils import _hpid2_ra_dec, angular_separation
 from astropy import units as u
 from astropy.coordinates import SkyCoord
+from rubin_scheduler.scheduler.detailers import BaseDetailer
+
+
+class RandomFilterDetailer(BaseDetailer):
+    """Pick a random filter for the observations
+    """
+
+    def __init__(self, filters='riz', nights_to_prep=10000, seed=42):
+        self.survey_features = []
+
+        rng = np.random.default_rng(seed)
+        self.night2filter_int = rng.integers(low=0, high=len(filters), size=nights_to_prep)
+
+        self.filter_dict = {}
+        for i, filtername in enumerate(filters):
+            self.filter_dict[i] = filtername
+
+    def __call__(self, observation_list, conditions):
+
+        for obs in observation_list:
+            obs["filter"] = self.filter_dict[self.night2filter_int[conditions.night]]
+        return observation_list
 
 
 # Need to update LMC and SMC radius
