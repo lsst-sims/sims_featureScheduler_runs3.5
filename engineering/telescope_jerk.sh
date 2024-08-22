@@ -1,0 +1,2 @@
+python telescope_jerk.py
+python telescope_jerk_downtimes.py
