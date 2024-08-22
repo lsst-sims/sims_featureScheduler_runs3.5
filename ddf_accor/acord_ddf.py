@@ -32,7 +32,7 @@ from rubin_scheduler.utils import _hpid2_ra_dec
 #from gen_too_surveys import gen_too_surveys
 #from gen_events import gen_all_events
 
-from to_merge import make_rolling_footprints, CustomAreaMap
+from to_merge import make_rolling_footprints, CustomAreaMap, RandomFilterDetailer
 from roman_survey import gen_roman_off_season, gen_roman_on_season
 
 from ddf_presched_acor import generate_ddf_scheduled_obs
@@ -1245,6 +1245,7 @@ def generate_twilight_near_sun(
                 slew_estimate=slew_estimate, n_repeat=n_repeat
             )
         )
+        detailer_list.append(RandomFilterDetailer(filters=filters))
         bfs = []
 
         bfs.append(
