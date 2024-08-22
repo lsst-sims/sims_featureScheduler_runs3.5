@@ -14,6 +14,7 @@ Updates:
 * turning default exposure time down to 29.2s for all filters but u
 * increase camera read time to 2.4s
 * patch bug to make sure pairs complete before flushing
+* make sure twilight near sun survey cycles through all filters
 
 
 --looks like the flag to turn off uniform could use some more work, but if we want uniform releases it's fine.
