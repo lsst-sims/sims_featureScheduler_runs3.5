@@ -1572,7 +1572,7 @@ def example_scheduler(args):
             split_long=split_long,
         )
         surveys = [toos, roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
-        fileroot += 'too_'
+        fileroot = fileroot.replace('baseline', 'too')
 
     else:
         surveys = [roman_surveys, ddfs, long_gaps, blobs, twi_blobs, neo, greedy]
