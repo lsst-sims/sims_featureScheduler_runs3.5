@@ -14,21 +14,11 @@
 #
 #SBATCH --time=0-48:10:00
 #SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/ddf_agn
+#SBATCH --mail-user=yoachim@uw.edu
 
 ## Set up the evironment
 source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin
 export OPENBLAS_NUM_THREADS=1
 
-# python early_draft_too.py --no_too 
-# python ddf_agn.py
-ls *10yrs.db | xargs -I'{}' echo "scimaf_dir --db '{}'" > maf.sh
-ls *10yrs.db | xargs -I'{}' echo "glance_dir --db '{}'" >> maf.sh
-ls *10yrs.db | xargs -I'{}' echo "ddf_dir --db '{}'" >> maf.sh
-ls *10yrs.db | xargs -I'{}' echo "metadata_dir --db '{}'" >> maf.sh
-
-
-generate_ss
-cat ss_script.sh >> maf.sh
-
-cat maf.sh | parallel -j 2
+python ddf_agn.py
