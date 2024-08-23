@@ -9,8 +9,8 @@
 #
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
-#SBATCH --mem=180g
+#SBATCH --cpus-per-task=15
+#SBATCH --mem=270g
 #
 #SBATCH --time=2-14:10:00
 #SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/maf
@@ -36,6 +36,6 @@ ls *10yrs.db | xargs -I'{}' echo "metadata_dir --db '{}'" >> maf.sh
 generate_ss
 cat ss_script.sh >> maf.sh
 
-cat maf.sh | parallel -j 10 
+cat maf.sh | parallel -j 15 
 
 gather_summaries --to_hdf
