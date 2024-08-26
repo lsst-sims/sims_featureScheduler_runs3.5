@@ -9,15 +9,22 @@
 #
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=20
 #SBATCH --mem-per-cpu=20g
 #
 #SBATCH --time=2-14:10:00
 #SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs3.5/weather
+#
+##turn on e-mail notification
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=yoachim@uw.edu
 
 ## Set up the evironment
 source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin
 export OPENBLAS_NUM_THREADS=1
 
-cat weather.sh | parallel -j 16
+#cat weather.sh | parallel -j 16
+
+generate_ss
+cat ss_script.sh | parallel -j 20 
