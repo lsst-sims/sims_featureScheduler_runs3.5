@@ -6,6 +6,11 @@
 The further adventues of simulating Rubin observing strategies
 
 
+Completed simulations can be found at: https://s3df.slac.stanford.edu/data/rubin/sim-data/sims_featureScheduler_runs3.5/
+
+Latest analysis of runs often served at: http://astro-lsst-01.astro.washington.edu:8080/
+
+
 List from fed on slack:
 
 * baseline - with unifrom rolling, 29.x sec exposures (no-snaps) (38 in uband), ToO, new galactic footprint, Roman field at some point, what filter balance on Clouds and SCP?
