@@ -1159,7 +1159,7 @@ def generate_twilight_near_sun(
     footprint_weight=0.1,
     slewtime_weight=3.0,
     stayfilter_weight=3.0,
-    area_required=None,
+    min_area=None,
     filters="riz",
     n_repeat=4,
     sun_alt_limit=-14.8,
@@ -1201,7 +1201,7 @@ def generate_twilight_near_sun(
         Weight for slewtime basis function
     stayfilter_weight : float (3.)
         Weight for staying in the same filter basis function
-    area_required : float (None)
+    min_area : float (None)
         The area that needs to be available before the survey will return observations (sq degrees?)
     filters : str ('riz')
         The filters to use, default 'riz'
@@ -1325,7 +1325,7 @@ def generate_twilight_near_sun(
                 detailers=detailer_list,
                 az_range=az_range,
                 twilight_scale=False,
-                area_required=area_required,
+                min_area=min_area,
             )
         )
     return surveys
@@ -1528,7 +1528,7 @@ def example_scheduler(args):
         footprint_mask=footprint_mask,
         max_airmass=neo_am,
         max_elong=neo_elong_req,
-        area_required=neo_area_req,
+        min_area=neo_area_req,
     )
     blobs = generate_blobs(
         nside,
