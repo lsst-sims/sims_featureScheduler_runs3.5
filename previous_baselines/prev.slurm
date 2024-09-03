@@ -9,7 +9,7 @@
 #
 #SBATCH --nodes=1                       # Number of nodes
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=40
+#SBATCH --cpus-per-task=20
 #SBATCH --mem=100g
 #
 #SBATCH --time=1-24:10:00
